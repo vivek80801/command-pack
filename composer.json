@@ -1,0 +1,12 @@
+{
+    "name": "vivek/command-pack",
+    "description": "Cli tool for creating views, actions, sevices, repositores and controllers more easily",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vivek\\CommandPack\\": "src/"
+        }
+    },
+    "require": {}
+}
