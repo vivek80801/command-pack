@@ -1,6 +1,29 @@
 # Command Pack
 
-This is laravel package for creating controller, actions, services, repositories and views with brace expansion.you can do php artisan make:createView "{product,roles,category}". It will create `product/index.blade.php`, `product/edit.blade.php`, `product/create.blade.php`, `roles/index.blade.php`, `roles/create.blade.php`, `roles/edit.blade.php`, `category/index.blade.php`, `category/create.blade.php`, `category/edit.blade.php`
+This is laravel package for creating controller, actions, services, repositories and views with brace expansion.you can do php artisan make:createView "{product,role,category}/{index,create,edit}". It will create `product/index.blade.php`, `product/edit.blade.php`, `product/create.blade.php`, `roles/index.blade.php`, `roles/create.blade.php`, `roles/edit.blade.php`, `category/index.blade.php`, `category/create.blade.php`, `category/edit.blade.php`
+
+## Install
+
+First, clone the repo.
+Second, In your laravel project. open `composer.json`.
+
+```json
+"repositories": [
+      {
+        "type": "path",
+        "url": "path/where/you/clone/this/repo"
+      }
+    ]
+```
+Third, Add this line to your composer.json
+Fourth, `composer install`
+
+```bash
+
+# It will this package to your current project
+composer install
+
+```
 
 ## Usage
 
