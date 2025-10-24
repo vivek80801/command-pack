@@ -16,8 +16,13 @@ class CreateController extends Command
 
     public function handle()
     {
-        $namespace = ucfirst(Config::get("command-pack.controller_folder"));
-        ViewHelper::createFile($this->argument("controller"), base_path() . "/" . Config::get("command-pack.controller_folder"), $this, ".php", $namespace, "controller");
+        $config_dir = Config::get("command-pack.controller_folder");
+        if(!is_dir(base_path() . "/" . $config_dir))
+        {
+            mkdir(base_path() . "/" . $config_dir);
+        }
+        $namespace = ucfirst($config_dir);
+        ViewHelper::createFile($this->argument("controller"), base_path() . "/" . $config_dir, $this, ".php", $namespace, "controller");
     }
 }
 

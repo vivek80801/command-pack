@@ -16,8 +16,13 @@ class CreateService extends Command
 
     public function handle()
     {
-        $namespace = ucfirst(Config::get("command-pack.services_folder"));
-        ViewHelper::createFile($this->argument("service"), base_path() . "/" . Config::get("command-pack.services_folder"), $this, ".php", $namespace, "service");
+        $config_dir = Config::get("command-pack.services_folder");
+        if(!is_dir(base_path() . "/" . $config_dir))
+        {
+            mkdir(base_path() . "/" . $config_dir);
+        }
+        $namespace = ucfirst($config_dir);
+        ViewHelper::createFile($this->argument("service"), base_path() . "/" . $config_dir, $this, ".php", $namespace, "service");
     }
 }
 

@@ -16,8 +16,13 @@ class CreateRepository extends Command
 
     public function handle()
     {
-        $namespace = ucfirst(Config::get("command-pack.repositories_folder"));
-        ViewHelper::createFile($this->argument("repo"), base_path() . "/" . Config::get("command-pack.repositories_folder"), $this, ".php", $namespace, "repository");
+        $config_dir = Config::get("command-pack.repositories_folder");
+        if(!is_dir(base_path() . "/" . $config_dir))
+        {
+            mkdir(base_path() . "/" . $config_dir);
+        }
+        $namespace = ucfirst($config_dir);
+        ViewHelper::createFile($this->argument("repo"), base_path() . "/" . $config_dir, $this, ".php", $namespace, "repository");
     }
 }
 

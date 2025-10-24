@@ -16,8 +16,13 @@ class CreateView extends Command
 
     public function handle()
     {
-        $namespace = ucfirst(Config::get("view.paths")[0]);
-        ViewHelper::createFile($this->argument("view"), base_path() . "/" . Config::get("view.paths")[0], $this, ".blade.php", $namespace, "view");
+        $config_dir = Config::get("view.paths")[0];
+        if(!is_dir(base_path() . "/" . $config_dir))
+        {
+            mkdir(base_path() . "/" . $config_dir);
+        }
+        $namespace = $config_dir;
+        ViewHelper::createFile($this->argument("view"), base_path() . "/" . $config_dir, $this, ".blade.php", $namespace, "view");
     }
 }
 
