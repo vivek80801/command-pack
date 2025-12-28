@@ -8,11 +8,11 @@ First, clone the repo.
 Second, In your laravel project. open `composer.json`.
 
 ```json
-"repositories": [
-      {
-        "type": "path",
-        "url": "path/where/you/clone/this/repo"
-      }
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/vivek80801/command-pack"
+        }
     ]
 ```
 Third, Add this line to your composer.json
@@ -21,7 +21,7 @@ Fourth, `composer install`
 ```bash
 
 # It will this package to your current project
-composer install
+composer install vivek/command-pack
 
 ```
 

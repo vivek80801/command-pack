@@ -13,11 +13,6 @@ class CommandPackServiceProvider extends ServiceProvider
 {
     public function register()
     {
-
-    }
-
-    public function boot()
-    {
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CreateView::class,
@@ -27,14 +22,19 @@ class CommandPackServiceProvider extends ServiceProvider
                 CreateController::class,
             ]);
 
-            $this->publishes([
-                __DIR__ . '/config/command-pack.php' => config_path('command-pack.php'),
-            ], 'command-pack-config');
-
-            $this->publishes([
-                __DIR__.'/../stubs' => $this->app->basePath('stubs/vendor'),
-            ], 'command-pack-stub');
         }
+
+    }
+
+    public function boot()
+    {
+      $this->publishes([
+          __DIR__ . '/config/command-pack.php' => config_path('command-pack.php'),
+      ], 'command-pack-config');
+
+      $this->publishes([
+          __DIR__.'/../stubs' => $this->app->basePath('stubs/vendor'),
+      ], 'command-pack-stub');
     }
 }
 

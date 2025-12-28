@@ -1,6 +1,6 @@
 {
     "name": "vivek/command-pack",
-    "description": "Cli tool for creating views, actions, sevices, repositores and controllers more easily",
+    "description": "Laravel command pack",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -8,5 +8,16 @@
             "Vivek\\CommandPack\\": "src/"
         }
     },
-    "require": {}
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vivek\\CommandPack\\CommandPackServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0"
+    }
 }
+
