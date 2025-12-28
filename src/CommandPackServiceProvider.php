@@ -33,7 +33,7 @@ class CommandPackServiceProvider extends ServiceProvider
       ], 'command-pack-config');
 
       $this->publishes([
-          __DIR__.'/stubs' => $this->app->basePath('stubs/vendor'),
+          __DIR__.'/stubs' => $this->app->basePath('stubs/vendor/vivek'),
       ], 'command-pack-stub');
     }
 }

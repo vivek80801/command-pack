@@ -21,7 +21,7 @@ class CreateAction extends Command
         {
             mkdir(base_path() . "/" . $config_dir);
         }
-        $namespace = ucfirst($config_dir);
+        $namespace = ucfirst(str_replace("/", "\\", $config_dir));
         ViewHelper::createFile($this->argument("action"), base_path() . "/" . $config_dir, $this, ".php", $namespace, "action");
     }
 }
