@@ -11,7 +11,6 @@ class ViewHelper
       private FileHelper $file_helper,
       private StubHelper $stub_helper,
       private ParseHelper $parse_helper,
-      private $logger
     ) {}
     public function createFile
     (
@@ -26,6 +25,7 @@ class ViewHelper
         foreach($dirs as $dir)
         {
             $this->file_helper->mkdir($dir);
+            echo "Directory: " . $dir ." created";
             foreach($files as $file)
             {
                 $stub_content = $this->stub_helper->get_stub(
@@ -34,6 +34,7 @@ class ViewHelper
                     $ctx->extension
                 );
                 $this->file_helper->write($file, $stub_content);
+                echo "File: " . $dir . "/". $file ." created";
             }
         }
     }
