@@ -27,6 +27,7 @@ class CreateController extends Command
         }
         $namespace = ucfirst(str_replace("/", "\\", $config_dir));
 
+        $base_path = base_path() . "/" . $config_dir;
         $file_helper = new FileHelper();
         $stub_helper = new StubHelper();
         $parse_helper = new ParseHelper();
