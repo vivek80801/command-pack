@@ -2,7 +2,7 @@
 
 namespace Vivek\CommandPack\Support\Helpers;
 
-use vivek\CommandPack\Support\Helpers\FileHelperInterface;
+use Vivek\CommandPack\Support\Helpers\FileHelperInterface;
 
 class FileHelper implements FileHelperInterface
 {
