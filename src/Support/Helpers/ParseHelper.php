@@ -20,6 +20,7 @@ class ParseHelper
      */
     public function parse(string $input): array
     {
+        $seperator = '/';
         if ($input === '') {
             throw new Exception('Input cannot be empty');
         }
@@ -28,7 +29,14 @@ class ParseHelper
             throw new Exception('Whole input cannot be nested');
         }
 
-        $parts = explode('/', $input);
+        if(!str_contains($input, $seperator))
+        {
+            return [
+                'dirs'  => $input,
+                'files' => [],
+            ];
+        }
+        $parts = explode($seperator, $input);
 
         if (count($parts) > 2) {
             throw new Exception('Nested paths not supported');
