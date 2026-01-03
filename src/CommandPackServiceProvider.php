@@ -1,13 +1,13 @@
 <?php
 
-namespace vivek\CommandPack;
+namespace Vivek\CommandPack;
 
 use Illuminate\Support\ServiceProvider;
-use vivek\CommandPack\Console\Commands\CreateAction;
-use vivek\CommandPack\Console\Commands\CreateController;
-use vivek\CommandPack\Console\Commands\CreateRepository;
-use vivek\CommandPack\Console\Commands\CreateService;
-use vivek\CommandPack\Console\Commands\CreateView;
+use Vivek\CommandPack\Console\Commands\CreateAction;
+use Vivek\CommandPack\Console\Commands\CreateController;
+use Vivek\CommandPack\Console\Commands\CreateRepository;
+use Vivek\CommandPack\Console\Commands\CreateService;
+use Vivek\CommandPack\Console\Commands\CreateView;
 
 class CommandPackServiceProvider extends ServiceProvider
 {
@@ -33,7 +33,7 @@ class CommandPackServiceProvider extends ServiceProvider
       ], 'command-pack-config');
 
       $this->publishes([
-          __DIR__.'/stubs' => $this->app->basePath('stubs/vendor/vivek'),
+          __DIR__.'/stubs' => $this->app->basePath('stubs/vendor/Vivek'),
       ], 'command-pack-stub');
     }
 }

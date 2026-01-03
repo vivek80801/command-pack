@@ -1,10 +1,14 @@
 <?php
 
-namespace vivek\CommandPack\Console\Commands;
+namespace Vivek\CommandPack\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use vivek\CommandPack\Support\Helpers\ViewHelper;
+use Vivek\CommandPack\Support\Helpers\ContextHelper;
+use Vivek\CommandPack\Support\Helpers\FileHelper;
+use Vivek\CommandPack\Support\Helpers\ParseHelper;
+use Vivek\CommandPack\Support\Helpers\StubHelper;
+use Vivek\CommandPack\Support\Helpers\ViewHelper;
 
 class CreateController extends Command
 {
@@ -22,7 +26,14 @@ class CreateController extends Command
             mkdir(base_path() . "/" . $config_dir);
         }
         $namespace = ucfirst(str_replace("/", "\\", $config_dir));
-        ViewHelper::createFile($this->argument("controller"), base_path() . "/" . $config_dir, $this, ".php", $namespace, "controller");
+
+        $file_helper = new FileHelper();
+        $stub_helper = new StubHelper();
+        $parse_helper = new ParseHelper();
+        $ctx = new ContextHelper($base_path, $namespace, ".php", "controller");
+
+        $view_helper = new ViewHelper($file_helper, $stub_helper, $parse_helper);
+        $view_helper->createFile($this->argument("controller"), $ctx);
     }
 }
 

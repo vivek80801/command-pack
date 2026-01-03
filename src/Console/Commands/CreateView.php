@@ -1,10 +1,14 @@
 <?php
 
-namespace vivek\CommandPack\Console\Commands;
+namespace Vivek\CommandPack\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use vivek\CommandPack\Support\Helpers\ViewHelper;
+use Vivek\CommandPack\Support\Helpers\ContextHelper;
+use Vivek\CommandPack\Support\Helpers\FileHelper;
+use Vivek\CommandPack\Support\Helpers\ParseHelper;
+use Vivek\CommandPack\Support\Helpers\StubHelper;
+use Vivek\CommandPack\Support\Helpers\ViewHelper;
 
 class CreateView extends Command
 {
@@ -22,7 +26,14 @@ class CreateView extends Command
             mkdir(base_path() . "/" . $config_dir);
         }
         $namespace = $config_dir;
-        ViewHelper::createFile($this->argument("view"), base_path() . "/" . $config_dir, $this, ".blade.php", $namespace, "view");
+
+        $file_helper = new FileHelper();
+        $stub_helper = new StubHelper();
+        $parse_helper = new ParseHelper();
+        $ctx = new ContextHelper($base_path, $namespace, ".blade.php", "view");
+
+        $view_helper = new ViewHelper($file_helper, $stub_helper, $parse_helper);
+        $view_helper->createFile($this->argument("view"), $ctx);
     }
 }
 
