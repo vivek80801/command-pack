@@ -32,8 +32,8 @@ class ParseHelper
         if(!str_contains($input, $seperator))
         {
             return [
-                'dirs'  => $input,
-                'files' => [],
+                'dirs'  => [],
+                'files' => [$input],
             ];
         }
         $parts = explode($seperator, $input);
