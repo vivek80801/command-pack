@@ -47,7 +47,7 @@ class ViewHelper
             $content = $this->stub_helper->get_stub(
                 $ctx->stub_name,
                 $ctx->namespace,
-                $ctx->extension
+                $file
             );
 
             $file_path = $this->build_path($ctx, $dir, $file) . $ctx->extension;
