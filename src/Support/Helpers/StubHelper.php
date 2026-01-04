@@ -3,7 +3,11 @@
 namespace Vivek\CommandPack\Support\Helpers;
 
 class StubHelper {
-    public function get_stub (string $file_name, string $namespace, string $className)
+    public function get_stub (
+        string $file_name,
+        string $namespace,
+        string $className
+    )
     {
         $stubPath = __DIR__ . '/../../stubs/' . $file_name . '.stub'; 
 
