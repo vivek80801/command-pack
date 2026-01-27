@@ -33,7 +33,7 @@ class ParseHelper
         {
             return [
                 'dirs'  => [],
-                'files' => [$input],
+                'files' => $this->parsePart($input),
             ];
         }
         $parts = explode($seperator, $input);
