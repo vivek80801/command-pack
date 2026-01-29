@@ -30,8 +30,9 @@ class ViewHelper
         }
 
         foreach ($dirs as $dir) {
-            $this->file_helper->mkdir($dir);
-            $this->logger->log("File: $dir created");
+            $dir_path = $ctx->base_path . "/" . $dir;
+            $this->file_helper->mkdir($dir_path);
+            $this->logger->log("File: " . $dir_path . " created");
             $this->create_files($files, $dir, $ctx);
         }
     }
@@ -52,10 +53,10 @@ class ViewHelper
 
             $file_path = $this->build_path($ctx, $dir, $file) . $ctx->extension;
             $this->file_helper->write($file_path, $content);
-            $this->logger->log("File:  $file_path created");
+            $this->logger->log("File: " . $file_path . " created");
         }
     }
-     
+
     private function build_path(
         ContextHelper $ctx,
         string $dir,

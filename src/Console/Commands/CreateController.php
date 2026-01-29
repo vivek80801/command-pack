@@ -19,7 +19,7 @@ class CreateController extends Command
             This is just an example you can create more of these structure from this package easily
         ';
 
-    public function handle()
+    public function handle():void
     {
         $config_dir = Config::get("command-pack.controller_folder");
         if(!is_dir(base_path() . "/" . $config_dir))

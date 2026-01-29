@@ -30,9 +30,9 @@ composer install vivek/command-pack
 ```bash
 
 #publish stub and config
-php artisan vendor:publish --provider="vivek\\CommandPack\\CommandPackServiceProvider" --tag="command-pack-config"
+php artisan vendor:publish --provider="Vivek\\CommandPack\\CommandPackServiceProvider" --tag="command-pack-config"
 
-php artisan vendor:publish --provider="vivek\\CommandPack\\CommandPackServiceProvider" --tag="command-pack-stub"
+php artisan vendor:publish --provider="Vivek\\CommandPack\\CommandPackServiceProvider" --tag="command-pack-stub"
 
 # Create View
 php artisan make:createView "{product,role,category}/{index,create,edit}"

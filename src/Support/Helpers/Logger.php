@@ -9,6 +9,6 @@ class Logger implements LoggerInterface
 {
     public function log(string $item): void
     {
-        echo $item . PHP_EOL;
+        echo "\x1b[1;35m" . $item . "\x1b[0m". PHP_EOL;
     }
 }
