@@ -25,7 +25,12 @@ class ParseHelper
             throw new Exception('Input cannot be empty');
         }
 
-        if ($this->is_nested($input)) {
+        $parts = explode($seperator, $input);
+        if (
+            $this->is_nested($input) &&
+            !$this->is_nested($parts[0]) &&
+            !$this->is_nested($parts[1])
+        ) {
             throw new Exception('Whole input cannot be nested');
         }
 
@@ -36,7 +41,6 @@ class ParseHelper
                 'files' => $this->parsePart($input),
             ];
         }
-        $parts = explode($seperator, $input);
 
         if (count($parts) > 2) {
             throw new Exception('Nested paths not supported');

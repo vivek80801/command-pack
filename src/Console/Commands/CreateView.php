@@ -22,13 +22,13 @@ class CreateView extends Command
     public function handle()
     {
         $config_dir = Config::get("view.paths")[0];
-        if(!is_dir(base_path() . "/" . $config_dir))
+        if(!is_dir($config_dir))
         {
-            mkdir(base_path() . "/" . $config_dir);
+            mkdir($config_dir);
         }
         $namespace = $config_dir;
 
-        $base_path = base_path() . "/" . $config_dir;
+        $base_path = $config_dir;
         $file_helper = new FileHelper();
         $stub_helper = new StubHelper();
         $parse_helper = new ParseHelper();
