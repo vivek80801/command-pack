@@ -31,8 +31,14 @@ class ViewHelper
 
         foreach ($dirs as $dir) {
             $dir_path = $ctx->base_path . "/" . $dir;
-            $this->file_helper->mkdir($dir_path);
-            $this->logger->log("File: " . $dir_path . " created");
+            // file_exists checks for both file and folder
+            if(!file_exists($dir_path))
+            {
+                $this->file_helper->mkdir($dir_path);
+                $this->logger->log("Folder: " . $dir_path . " created");
+            } else {
+                $this->logger->log("Folder: " . $dir_path . " exists. not creating");
+            }
             $this->create_files($files, $dir, $ctx);
         }
     }
@@ -52,8 +58,13 @@ class ViewHelper
             );
 
             $file_path = $this->build_path($ctx, $dir, $file) . $ctx->extension;
-            $this->file_helper->write($file_path, $content);
-            $this->logger->log("File: " . $file_path . " created");
+            if(!file_exists($file_path))
+            {
+                $this->file_helper->write($file_path, $content);
+                $this->logger->log("File: " . $file_path . " created");
+            }else {
+                $this->logger->log("File: " . $file_path . " already exists. not creating");
+            }
         }
     }
 
